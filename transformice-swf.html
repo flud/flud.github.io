@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformice - Ruffle</title>
+    <style type="text/css">
+        body { 
+            margin: 0; 
+            padding: 0;
+            overflow: hidden;
+            background-color: #6A7495;
+        }
+        #game-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+
+    <!-- Подключаем Ruffle -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        // Настраиваем Ruffle
+        window.RufflePlayer = window.RufflePlayer || {};
+        
+        window.addEventListener("load", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            
+            // Добавляем плеер в контейнер
+            const container = document.getElementById("game-container");
+            container.appendChild(player);
+            
+            // Загружаем SWF файл
+            player.style.width = "100%";
+            player.style.height = "100%";
+            player.load("ChargeurTransformice.swf");
+        });
+    </script>
+</body>
+</html>
