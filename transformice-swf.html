@@ -22,21 +22,6 @@
 </head>
 <body>
     <div id="game-container"></div>
-
-    <!-- 
-        ВАЖНО: Игра не загрузится, если у вас нет файла "Transformice.swf".
-        Оригинальный загрузчик (ChargeurTransformice.swf) пытается скачать игру с оф. сервера,
-        но браузер блокирует это из-за CORS (политика безопасности).
-        
-        ИНСТРУКЦИЯ ПО ЗАПУСКУ:
-        1. Найдите файл "Transformice.swf" (основной клиент игры).
-        2. Положите его в эту же папку рядом с этим html файлом.
-        3. Обновите страницу.
-        
-        Без локального файла Transformice.swf игра работать НЕ БУДЕТ из-за блокировки CORS.
-    -->
-
-    <!-- Подключаем Ruffle -->
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
         // Настраиваем Ruffle
@@ -60,16 +45,9 @@
             player.style.width = "100%";
             player.style.height = "100%";
 
-            // Загружаем загрузчик. 
-            // ОШИБКА CORS: Загрузчик попытается сделать запрос к https://www.transformice.com/Transformice.swf,
-            // но браузер заблокирует его, так как сервер не отправляет заголовок Access-Control-Allow-Origin.
             player.load({
-                url: "ChargeurTransformice.swf",
+                url: "Transformice.swf",
                 allowScriptAccess: "always"
-            }).catch(err => {
-                console.error("Ruffle error:", err);
-                alert("Ошибка CORS: Загрузчик не может скачать игру с официального сервера.\nПожалуйста, скачайте файл 'Transformice.swf' и положите его рядом с этим файлом.");
-            });
         });
     </script>
 </body>
