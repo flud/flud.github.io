@@ -28,6 +28,15 @@
     <script>
         // Настраиваем Ruffle
         window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = {
+            allowScriptAccess: true,
+            autoplay: "on",
+            backgroundColor: "#6A7495",
+            unmuteOverlay: "hidden",
+            contextMenu: true,
+            warnOnUnsupportedContent: true,
+            logging: "info"
+        };
         
         window.addEventListener("load", () => {
             const ruffle = window.RufflePlayer.newest();
@@ -37,10 +46,13 @@
             const container = document.getElementById("game-container");
             container.appendChild(player);
             
-            // Загружаем SWF файл
+            // Загружаем SWF файл автоматически
             player.style.width = "100%";
             player.style.height = "100%";
-            player.load("ChargeurTransformice.swf");
+            player.load({
+                url: "ChargeurTransformice.swf",
+                allowScriptAccess: true
+            });
         });
     </script>
 </body>
