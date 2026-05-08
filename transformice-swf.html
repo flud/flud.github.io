@@ -42,13 +42,15 @@
             const container = document.getElementById("game-container");
             container.appendChild(player);
 
-            player.style.width = "100%";
-            player.style.height = "100%";
-
-            player.load({
+            const config = {
                 url: "Transformice.swf",
-                allowScriptAccess: "always"
-        });
-    </script>
+                backgroundColor: "#000000",
+                allowScriptAccess: true,
+                unmuteOverlay: "hidden",
+                logLevel: "warn",
+            };
+            player.load(config);
+    });
+</script>
 </body>
 </html>
